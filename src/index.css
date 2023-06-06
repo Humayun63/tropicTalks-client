@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.tropic-outlet{
+    min-height: calc(100vh - 365px);
+}

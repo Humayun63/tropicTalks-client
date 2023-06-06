@@ -7,7 +7,9 @@ const Main = () => {
     return (
         <>
             <Header></Header>
-            <Outlet></Outlet>
+            <div className='tropic-outlet'>
+                <Outlet></Outlet>
+            </div>
             <Footer></Footer>
         </>
     );

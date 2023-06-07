@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 import { useForm } from "react-hook-form";
@@ -10,13 +10,14 @@ const Login = () => {
     const { emailSignIn } = useAuth()
     const navigate = useNavigate()
     const location = useLocation()
-    
+    const [isShow, setIsShow] = useState(false)
+
     const from = location.state?.from?.pathname || '/'
-    
+
     const onSubmit = data => {
         console.log(data)
         emailSignIn(data.email, data.password)
-            .then(() =>{
+            .then(() => {
                 toast.success('Login Success!')
                 navigate(from, { replace: true })
             })
@@ -50,7 +51,16 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="password" className="input input-bordered" {...register("password", { required: true })} />
+                            <input type={isShow ? 'text' : 'password'} placeholder="password" className="input input-bordered" {...register("password", { required: true })} />
+
+                            <label className=" cursor-pointer  flex w-36 items-center gap-4 mt-4">
+
+                                <input type="checkbox" checked={isShow}  onClick={()=> setIsShow(!isShow)} className="checkbox" />
+                                <span className="label-text">{
+                                    isShow ? 'Hide Password' : 'Show Password'
+                                }</span>
+                            </label>
+
                             {errors.password && <span className="mt-1 text-red-500">Password is required</span>}
                         </div>
                         <div>

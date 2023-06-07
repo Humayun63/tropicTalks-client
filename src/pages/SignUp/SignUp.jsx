@@ -22,7 +22,7 @@ const SignUp = () => {
 
         createUser(data.email, data.password)
             .then(() => {
-                updateUser(data.name, data.photoURL)
+                updateUser(data.name, data.photo)
                     .then(() => {
                         const loggedUser = { email: data.email, name: data.name }
 

@@ -1,12 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 import { useForm } from "react-hook-form";
+import useAuth from '../../customHooks/useAuth';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const { emailSignIn } = useAuth()
+    const navigate = useNavigate()
+    const location = useLocation()
+    
+    const from = location.state?.from?.pathname || '/'
+    
     const onSubmit = data => {
         console.log(data)
+        emailSignIn(data.email, data.password)
+            .then(() =>{
+                toast.success('Login Success!')
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${error.message}`,
+                })
+            })
     }
     return (
         <>
@@ -30,7 +50,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="password" className="input input-bordered" {...register("password", { required: true })}/>
+                            <input type="password" placeholder="password" className="input input-bordered" {...register("password", { required: true })} />
                             {errors.password && <span className="mt-1 text-red-500">Password is required</span>}
                         </div>
                         <div>

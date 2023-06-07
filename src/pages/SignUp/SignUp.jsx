@@ -1,12 +1,70 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
+import useAuth from '../../customHooks/useAuth';
 
 const SignUp = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm()
+    const { createUser, updateUser } = useAuth()
+    const navigate = useNavigate()
     const onSubmit = data => {
-        console.log(data)
+
+        if (data.password !== data.confirm) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password and Confirm password are not same!',
+            })
+            return
+        }
+
+        createUser(data.email, data.password)
+            .then(() => {
+                updateUser(data.name, data.photoURL)
+                    .then(() => {
+                        const loggedUser = { email: data.email, name: data.name }
+
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(loggedUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    Swal.fire({
+                                        position: 'center',
+                                        icon: 'success',
+                                        title: 'Register Success!',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                    reset()
+                                    navigate('/')
+                                }
+                            })
+
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: `${error.message}`,
+                        })
+                    })
+
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${error.message}`,
+                })
+            })
     }
     return (
         <>

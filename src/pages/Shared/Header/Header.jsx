@@ -1,17 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 import useAuth from '../../../customHooks/useAuth';
 
 const Header = () => {
-    const {name, user} = useAuth()
+    const { name, user } = useAuth()
     console.log(user, name)
     const menuItems = <>
-        <li></li>
+        <li><NavLink to='/' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>Home</NavLink></li>
+        <li><NavLink to='/instructors' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>Instructors</NavLink></li>
+        <li><NavLink to='/classes' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>Classes</NavLink></li>
+        {
+            user &&
+            <li><NavLink to='dashboard' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>Dashboard</NavLink></li>
+        }
     </>
     return (
         <>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-green-300 rounded-md">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -25,7 +31,7 @@ const Header = () => {
                         <img src={logo} className='w-12' alt="Logo" />
                         <p>
                             Tropic<span className="text-green-500">Talks</span>
-                        </p>                    
+                        </p>
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -34,7 +40,17 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    {
+                        user ?
+                            <>
+                            
+                            </> :
+                            <>
+                                <Link>
+                                    <button className='btn border-0'>Login</button>
+                                </Link>
+                            </>
+                    }
                 </div>
             </div>
         </>

@@ -5,3 +5,9 @@
 .tropic-outlet{
     min-height: calc(100vh - 365px);
 }
+.tropic-active{
+    @apply text-lg text-white font-bold
+}
+.tropic-default{
+    @apply text-lg text-black
+}

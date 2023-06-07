@@ -4,7 +4,7 @@ import logo from '../../../assets/logo.png'
 import useAuth from '../../../customHooks/useAuth';
 
 const Header = () => {
-    const {  user, logOut } = useAuth()
+    const { user, logOut } = useAuth()
     console.log(user)
     console.log(user)
     const handleLogout = () => {
@@ -35,9 +35,9 @@ const Header = () => {
             user &&
             <>
                 <li><NavLink to='dashboard' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>Dashboard</NavLink></li>
-                <li>
-                    <img src={user.photoURL} alt="User Photo" className='w-16 rounded-full border' title={user?.displayName} />
-                </li>
+
+                <img src={user?.photoURL} alt="User Photo" className='w-16 h-16 rounded-full border' title={user?.displayName} />
+
             </>
         }
     </>

@@ -11,3 +11,6 @@
 .tropic-default{
     @apply text-lg text-black
 }
+.menu{
+    @apply md:flex items-center
+}

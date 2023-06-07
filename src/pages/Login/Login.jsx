@@ -55,7 +55,7 @@ const Login = () => {
 
                             <label className=" cursor-pointer  flex w-36 items-center gap-4 mt-4">
 
-                                <input type="checkbox" checked={isShow}  onClick={()=> setIsShow(!isShow)} className="checkbox" />
+                                <input type="checkbox" checked={isShow}  onChange={()=> setIsShow(!isShow)} className="checkbox" />
                                 <span className="label-text">{
                                     isShow ? 'Hide Password' : 'Show Password'
                                 }</span>

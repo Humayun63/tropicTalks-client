@@ -6,15 +6,23 @@ import router from './routes/Route'
 import AuthProvider from './provider/AuthProvider'
 import { HelmetProvider } from 'react-helmet-async'
 import { Toaster } from 'react-hot-toast'
+import {
+  QueryClient,
+  QueryClientProvider
+} from 'react-query'
+
+const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <div className='container mx-auto'>
     <React.StrictMode>
-      <Toaster/>
+      <Toaster />
       <HelmetProvider>
-        <AuthProvider>
-          <RouterProvider router={router} />
-        </AuthProvider>
+        <QueryClientProvider client={queryClient}>
+          <AuthProvider client={queryClient}>
+            <RouterProvider router={router} />
+          </AuthProvider>
+        </QueryClientProvider>
       </HelmetProvider>
     </React.StrictMode>
   </div>

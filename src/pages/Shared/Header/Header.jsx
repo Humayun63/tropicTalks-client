@@ -4,8 +4,28 @@ import logo from '../../../assets/logo.png'
 import useAuth from '../../../customHooks/useAuth';
 
 const Header = () => {
-    const { name, user } = useAuth()
-    console.log(user, name)
+    const {  user, logOut } = useAuth()
+    console.log(user)
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Successfully logout!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${error.message}`,
+                })
+            })
+    }
+
     const menuItems = <>
         <li><NavLink to='/' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>Home</NavLink></li>
         <li><NavLink to='/instructors' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>Instructors</NavLink></li>
@@ -43,7 +63,7 @@ const Header = () => {
                     {
                         user ?
                             <>
-                            
+                                <button className="btn" onClick={handleLogout}>LogOut</button>
                             </> :
                             <>
                                 <Link to='/login'>

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
+import useAuth from '../../../customHooks/useAuth';
 
 const Header = () => {
-
+    const {name, user} = useAuth()
+    console.log(user, name)
     const menuItems = <>
         <li></li>
     </>

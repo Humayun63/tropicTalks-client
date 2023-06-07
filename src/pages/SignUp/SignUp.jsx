@@ -120,9 +120,9 @@ const SignUp = () => {
                         <div>
                             <label className="label">
                                 <p className="label-text-alt">
-                                    New to TropicTalks?
+                                    Already Have an Account?
                                     <Link to='/login' className='mx-1 link'>
-                                        SignUp Here!
+                                        Login Here!
                                     </Link>
                                 </p>
 

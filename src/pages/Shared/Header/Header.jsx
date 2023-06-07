@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../../../assets/logo.png'
 
 const Header = () => {
 
@@ -17,7 +19,12 @@ const Header = () => {
                             {menuItems}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                    <Link to='/' className="font-bold normal-case text-3xl inline-flex items-center">
+                        <img src={logo} className='w-12' alt="Logo" />
+                        <p>
+                            Tropic<span className="text-green-500">Talks</span>
+                        </p>                    
+                    </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

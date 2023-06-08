@@ -15,6 +15,9 @@ import DBHome from "../pages/DashBoard/DashBoard/DBHome";
 import ManageUsers from "../pages/DashBoard/Admin/ManageUser/ManageUsers";
 import ManageClasses from "../pages/DashBoard/Admin/ManageClasses/ManageClasses";
 import AdminRoute from "./AdminRoute";
+import AddClass from "../pages/DashBoard/Instructor/AddClass/AddClass";
+import InstructorRoute from "./InstructorRoute";
+import AllClass from "../pages/DashBoard/Instructor/AllClass/AllClass";
 
 
 
@@ -68,6 +71,7 @@ const router = createBrowserRouter([
                 path: 'user/selected',
                 element: <Selected></Selected>
             },
+            // Admin Routes
             {
                 path: 'admin/manage-users',
                 element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
@@ -75,6 +79,15 @@ const router = createBrowserRouter([
             {
                 path: 'admin/manage-classes',
                 element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
+            },
+            // Instructor Routes
+            {
+                path:'instructor/add-class',
+                element:<InstructorRoute><AddClass></AddClass></InstructorRoute>
+            },
+            {
+                path:'instructor/all-class',
+                element:<InstructorRoute><AllClass></AllClass></InstructorRoute>
             }
         ]
     }

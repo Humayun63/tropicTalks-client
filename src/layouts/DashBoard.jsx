@@ -1,18 +1,22 @@
 import React from 'react';
-import { FaBookReader, FaGraduationCap, FaHome, FaUsers, FaWallet } from 'react-icons/fa';
+import { FaBookReader, FaGraduationCap, FaHome, FaHouseUser, FaPlus, FaUsers, FaWallet } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import useAdmin from '../customHooks/useAdmin';
 import useInstructor from '../customHooks/useInstructor';
 
 const DashBoard = () => {
-    const {isAdmin} = useAdmin()
-    const {isInstructor} = useInstructor()
+    const { isAdmin } = useAdmin()
+    const { isInstructor } = useInstructor()
 
     let routes;
 
     if (isAdmin) {
         routes = <>
+            <li><NavLink to='/dashboard/home' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>
+                <FaHouseUser></FaHouseUser>
+                Dashboard Home
+            </NavLink></li>
             <li><NavLink to='/dashboard/admin/manage-users' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>
                 <FaUsers></FaUsers>
                 Manage Users
@@ -21,12 +25,29 @@ const DashBoard = () => {
                 <FaGraduationCap></FaGraduationCap>
                 Manage Classes
             </NavLink></li>
-            
+
         </>
     } else if (isInstructor) {
-
+        routes = <>
+            <li><NavLink to='/dashboard/home' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>
+                <FaHouseUser></FaHouseUser>
+                Dashboard Home
+            </NavLink></li>
+            <li><NavLink to='/dashboard/instructor/add-class' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>
+                <FaPlus></FaPlus>
+                Add New Class
+            </NavLink></li>
+            <li><NavLink to='/dashboard/instructor/all-class' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>
+                <FaGraduationCap></FaGraduationCap>
+                All Classes
+            </NavLink></li>
+        </>
     } else {
         routes = <>
+            <li><NavLink to='/dashboard/home' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>
+                <FaHouseUser></FaHouseUser>
+                Dashboard Home
+            </NavLink></li>
             <li><NavLink to='/dashboard/user/selected' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>
                 <FaBookReader></FaBookReader>
                 Selected Courses

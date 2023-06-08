@@ -38,16 +38,16 @@ const Selected = () => {
         })
     }
 
-    if(myClass.length === 0){
+    if (myClass.length === 0) {
         return <>
             <div className='flex items-center justify-center h-[90vh]'>
                 <div>
                     <h2 className="text-xl text-center text-green-400">Please Select a class!</h2>
-                    <button className="btn">
-                        <Link to='/classes'>
+                    <Link to='/classes'>
+                        <button className="btn">
                             Go To Classes
-                        </Link>
-                    </button>
+                        </button>
+                    </Link>
                 </div>
             </div>
         </>

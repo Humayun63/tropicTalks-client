@@ -12,6 +12,8 @@ import PaymentHistory from "../pages/DashBoard/User/PaymentHistory/PaymentHistor
 import Selected from "../pages/DashBoard/User/Selected/Selected";
 import PrivateRoute from "./PrivateRoute";
 import DBHome from "../pages/DashBoard/DashBoard/DBHome";
+import ManageUsers from "../pages/DashBoard/Admin/ManageUser/ManageUsers";
+import ManageClasses from "../pages/DashBoard/Admin/ManageClasses/ManageClasses";
 
 
 
@@ -64,6 +66,14 @@ const router = createBrowserRouter([
             {
                 path: 'user/selected',
                 element: <Selected></Selected>
+            },
+            {
+                path:'admin/manage-users',
+                element:<ManageUsers></ManageUsers>
+            },
+            {
+                path:'admin/manage-classes',
+                element:<ManageClasses></ManageClasses>
             }
         ]
     }

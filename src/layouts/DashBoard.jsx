@@ -1,21 +1,23 @@
 import React from 'react';
-import { FaBookReader, FaGraduationCap, FaHome, FaWallet } from 'react-icons/fa';
+import { FaBookReader, FaGraduationCap, FaHome, FaUsers, FaWallet } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import logo from '../assets/logo.png'
+import useAdmin from '../customHooks/useAdmin';
+import useInstructor from '../customHooks/useInstructor';
 
 const DashBoard = () => {
-    const isAdmin = false;
-    const isInstructor = false;
+    const {isAdmin} = useAdmin()
+    const {isInstructor} = useInstructor()
 
     let routes;
 
     if (isAdmin) {
         routes = <>
-            <li><NavLink to='/dashboard/user/selected' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>
-                <FaBookReader></FaBookReader>
-                Selected Courses
+            <li><NavLink to='/dashboard/admin/manage-users' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>
+                <FaUsers></FaUsers>
+                Manage Users
             </NavLink></li>
-            <li><NavLink to='/dashboard/user/enrolled' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>
+            <li><NavLink to='/dashboard/admin/manage-classes' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>
                 <FaGraduationCap></FaGraduationCap>
                 Manage Classes
             </NavLink></li>

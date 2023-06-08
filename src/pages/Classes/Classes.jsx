@@ -2,8 +2,10 @@ import React from 'react';
 import useClasses from '../../customHooks/useClasses';
 import SingleCard from './SingleCard';
 
+
 const Classes = () => {
     const { classes } = useClasses()
+    // console.log(myClass)
     return (
         <>
             <h2 className="text-2xl text-center font-bold mb-6">All Classes</h2>

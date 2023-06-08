@@ -1,10 +1,10 @@
 import React from 'react';
 import { FaBookReader, FaGraduationCap, FaHome, FaWallet } from 'react-icons/fa';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import logo from '../assets/logo.png'
 
 const DashBoard = () => {
-    const isAdmin = true;
+    const isAdmin = false;
     const isInstructor = false;
 
     let routes;
@@ -44,10 +44,12 @@ const DashBoard = () => {
         <>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content flex flex-col items-center justify-center">
+                <div className="drawer-content m-4">
 
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open Dashboard</label>
-
+                    <div>
+                        <Outlet></Outlet>
+                    </div>
 
                 </div>
                 <div className="drawer-side">

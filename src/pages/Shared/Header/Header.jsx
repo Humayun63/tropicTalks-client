@@ -35,7 +35,7 @@ const Header = () => {
         {
             user &&
             <>
-                <li><NavLink to='dashboard' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>Dashboard</NavLink></li>
+                <li><NavLink to='/dashboard/home' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>Dashboard</NavLink></li>
 
                 <img src={user?.photoURL} alt="User Photo" className='w-16 h-16 rounded-full border' title={user?.displayName} />
 

@@ -11,6 +11,8 @@ import Payment from "../pages/DashBoard/User/Payment/Payment";
 import PaymentHistory from "../pages/DashBoard/User/PaymentHistory/PaymentHistory";
 import Selected from "../pages/DashBoard/User/Selected/Selected";
 import PrivateRoute from "./PrivateRoute";
+import DBHome from "../pages/DashBoard/DashBoard/DBHome";
+
 
 
 const router = createBrowserRouter([
@@ -42,6 +44,10 @@ const router = createBrowserRouter([
         element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
+            {
+                path:'home',
+                element:<DBHome></DBHome>
+            },
             // User dashboard
             {
                 path: 'user/enrolled',

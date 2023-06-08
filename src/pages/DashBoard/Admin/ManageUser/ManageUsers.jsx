@@ -1,15 +1,19 @@
 import React from 'react';
 import useUsers from '../../../../customHooks/useUsers';
 import Swal from 'sweetalert2';
+import { FaUserAlt } from 'react-icons/fa';
+
 
 const ManageUsers = () => {
     const { users, refetch } = useUsers()
+
 
     const handleRole = (user, role) => {
         fetch(`http://localhost:5000/users/${user._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('access-token')}`
             },
             body: JSON.stringify({role: role})
         })
@@ -27,6 +31,8 @@ const ManageUsers = () => {
                 }
             })
             .catch(error => console.log(error))
+
+    
     }
 
     return (
@@ -68,12 +74,15 @@ const ManageUsers = () => {
                                         <div className="text-sm text-gray-900">{user.email}</div>
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="text-sm text-gray-900">${ }</div>
+                                        <div className="text-sm text-gray-900">{ 
+                                            user?.role ? user.role : 
+                                            <FaUserAlt></FaUserAlt>
+                                        }</div>
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap">
-                                        <button className="text-center mb-2 btn btn-xs" onClick={() => handleRole(user, 'admin')}>Make Admin</button>
+                                        <button disabled={user?.role === 'admin'} className="text-center mb-2 btn btn-xs" onClick={() => handleRole(user, 'admin')}>Make Admin</button>
                                         <br />
-                                        <button onClick={() => handleRole(user, 'instructor')} className="btn btn-xs">Make Instructor</button>
+                                        <button disabled={user?.role === 'instructor'} onClick={() => handleRole(user, 'instructor')} className="btn btn-xs">Make Instructor</button>
                                     </td>
                                 </tr>
                             ))}

@@ -14,6 +14,7 @@ import PrivateRoute from "./PrivateRoute";
 import DBHome from "../pages/DashBoard/DashBoard/DBHome";
 import ManageUsers from "../pages/DashBoard/Admin/ManageUser/ManageUsers";
 import ManageClasses from "../pages/DashBoard/Admin/ManageClasses/ManageClasses";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -47,8 +48,8 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
-                path:'home',
-                element:<DBHome></DBHome>
+                path: 'home',
+                element: <DBHome></DBHome>
             },
             // User dashboard
             {
@@ -68,12 +69,12 @@ const router = createBrowserRouter([
                 element: <Selected></Selected>
             },
             {
-                path:'admin/manage-users',
-                element:<ManageUsers></ManageUsers>
+                path: 'admin/manage-users',
+                element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
             },
             {
-                path:'admin/manage-classes',
-                element:<ManageClasses></ManageClasses>
+                path: 'admin/manage-classes',
+                element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
             }
         ]
     }

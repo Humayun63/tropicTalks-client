@@ -8,7 +8,7 @@ import Classes from "../pages/Classes/Classes";
 import DashBoard from "../layouts/DashBoard";
 import Enrolled from "../pages/DashBoard/User/Enrolled/Enrolled";
 import Payment from "../pages/DashBoard/User/Payment/Payment";
-import PaymentHistory from "../pages/DashBoard/User/PaymentHistroy/PaymentHistory";
+import PaymentHistory from "../pages/DashBoard/User/PaymentHistory/PaymentHistory";
 import Selected from "../pages/DashBoard/User/Selected/Selected";
 import PrivateRoute from "./PrivateRoute";
 

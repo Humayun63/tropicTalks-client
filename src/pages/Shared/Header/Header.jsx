@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 import useAuth from '../../../customHooks/useAuth';
+import Swal from 'sweetalert2';
 
 const Header = () => {
     const { user, logOut } = useAuth()

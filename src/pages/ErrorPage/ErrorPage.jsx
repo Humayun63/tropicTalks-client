@@ -1,12 +1,20 @@
 import React from 'react';
-import { useRouteError } from 'react-router-dom';
+import { Link, useRouteError } from 'react-router-dom';
 
 const ErrorPage = () => {
-    const error = useRouteError()
+    const { error, status } = useRouteError()
     console.log(error)
     return (
-        <div>
-            Error Page is here
+        <div className='flex items-center justify-center h-[100vh]'>
+            <div>
+                
+                    <p className='text-8xl text-red-400 font-bold my-6'>{status || 404}</p>
+                    <p className='text-xl  mb-4'>{error?.message || 'Something went wrong!'}</p>
+                
+                <button className='btn btn-info mt-8'>
+                    <Link to='/'>Go Back To Home</Link>
+                </button>
+            </div>
         </div>
     );
 };

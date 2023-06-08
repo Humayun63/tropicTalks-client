@@ -71,13 +71,7 @@ const CheckoutForm = ({ price, selectedItems }) => {
 
         if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id)
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Payment Success',
-                showConfirmButton: false,
-                timer: 1500
-            })
+
 
             const payment = {
                 name: user?.displayName,
@@ -89,14 +83,23 @@ const CheckoutForm = ({ price, selectedItems }) => {
                 selectedItemsIds: selectedItems.map(item => item._id),
                 classIds: selectedItems.map(item => item.classId)
             }
+
             axiosSecure.post('/payments', payment)
                 .then(res => {
                     console.log(res.data)
                     if (res.data.insertedResult.insertedId) {
-                        // confirm
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Payment Success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
                     }
                 })
             console.log(payment);
+
+
 
             navigate('/dashboard/user/enrolled')
         }

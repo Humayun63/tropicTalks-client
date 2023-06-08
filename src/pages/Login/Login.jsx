@@ -15,7 +15,6 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/'
 
     const onSubmit = data => {
-        console.log(data)
         emailSignIn(data.email, data.password)
             .then(() => {
                 toast.success('Login Success!')

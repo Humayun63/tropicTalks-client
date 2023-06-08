@@ -39,7 +39,7 @@ const SingleCard = ({ item }) => {
                 class_name,
                 price
             }
-            fetch('https://tropic-talks-server.vercel.app/select', {
+            fetch('http://localhost:5000/select', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

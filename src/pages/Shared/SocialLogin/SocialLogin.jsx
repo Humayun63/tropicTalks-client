@@ -19,7 +19,7 @@ const SocialLogin = () => {
                     email: data?.user?.email,
                     name: data?.user?.displayName
                 }
-                fetch('https://tropic-talks-server.vercel.app/users', {
+                fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

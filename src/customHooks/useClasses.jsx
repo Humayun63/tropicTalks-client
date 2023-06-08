@@ -4,7 +4,7 @@ const useClasses = () =>{
     const {data: classes = [], refetch} = useQuery({
         queryKey:['classes'],
         queryFn: async ()=>{
-            const res = await fetch('https://tropic-talks-server.vercel.app/classes')
+            const res = await fetch('http://localhost:5000/classes')
             return res.json()
         }
     })

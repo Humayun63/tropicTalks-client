@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import useAuth from '../../customHooks/useAuth';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import useAdmin from '../../customHooks/useAdmin';
+import useInstructor from '../../customHooks/useInstructor';
 
 const SingleCard = ({ item }) => {
     const { class_image, class_name, price, rating, available_seats, instructor_details, _id } = item || {}
     const { user } = useAuth()
     const navigate = useNavigate()
     const location = useLocation()
-    
-    
+    const [isDisable, setIsDisable] = useState(false)
+
+
+    if (user) {
+        const { isAdmin } = useAdmin()
+        const { isInstructor } = useInstructor()
+        if (isAdmin || isInstructor) {
+            setIsDisable(true)
+        }
+    }
+
 
     const handleEnroll = item => {
         if (!user) {
@@ -46,16 +57,16 @@ const SingleCard = ({ item }) => {
                 },
                 body: JSON.stringify(selectedItem)
             })
-            .then( res => res.json())
-            .then(data => {
-                console.log(data)
-                if(data.message === "exists"){
-                    toast.error(`Already added ${item.class_name}`)
-                }
-                if(data.insertedId){
-                    toast.success(`${item.class_name} is added. Please checkout!`)
-                }
-            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.message === "exists") {
+                        toast.error(`Already added ${item.class_name}`)
+                    }
+                    if (data.insertedId) {
+                        toast.success(`${item.class_name} is added. Please checkout!`)
+                    }
+                })
         }
     }
 
@@ -76,7 +87,7 @@ const SingleCard = ({ item }) => {
                         />
                     </div>
                     <div className="card-actions justify-end">
-                        <button className="btn" onClick={() => handleEnroll(item)} disabled={available_seats == 0}>Enroll Now!</button>
+                        <button className="btn" onClick={() => handleEnroll(item)} disabled={available_seats == 0 || isDisable}>Enroll Now!</button>
                     </div>
                 </div>
             </div>

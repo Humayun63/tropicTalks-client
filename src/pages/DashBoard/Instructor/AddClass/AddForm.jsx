@@ -6,8 +6,6 @@ const AddFrom = () => {
     const { user } = useAuth();
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-
-
     const img_hosting_token = import.meta.env.VITE_IMAGE_UPLOAD_TOKEN;
     const image_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
@@ -34,6 +32,7 @@ const AddFrom = () => {
                         available_seats: parseFloat(available_seats),
                         price: parseFloat(price),
                         status: 'pending',
+                        enrolled:0,
                         rating: 4,
                         instructor_details: {
                             instructor_name: user.displayName,

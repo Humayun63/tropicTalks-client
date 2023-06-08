@@ -3,10 +3,13 @@ import useSelected from '../../../../customHooks/useSelected';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../customHooks/useAxiosSecure';
+import { Link } from 'react-router-dom';
 
 const Selected = () => {
     const { myClass, refetch } = useSelected()
     const [axiosSecure] = useAxiosSecure()
+
+    const total = myClass.reduce((sum, item) => item.price + sum, 0)
 
     const handleDelete = id => {
         Swal.fire({
@@ -37,6 +40,13 @@ const Selected = () => {
 
     return (
         <div>
+            <div className='md:flex items-center justify-between space-y-2 my-6'>
+                <h3 className='my-4 text-2xl font-medium'>Selected Items: {myClass.length}</h3>
+                <p className='my-4 text-2xl font-medium'>Total Pay: ${total} </p>
+                <Link to='/dashboard/user/payment'>
+                    <button className="btn-sm btn bg-yellow-300">Pay</button>
+                </Link>
+            </div>
             <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200 shadow-2xl rounded-md">
                     <thead className="bg-green-500">

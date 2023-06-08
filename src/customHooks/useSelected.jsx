@@ -11,7 +11,6 @@ const useSelected = () => {
         enabled: !loading,
         queryFn: async () => {
             const res = await axiosSecure(`/select?email=${user?.email}`)
-            console.log('res from axios', res)
             return res.data;
         }
     })

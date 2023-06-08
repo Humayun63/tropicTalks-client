@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import Slider from '../Slider/Slider';
 import PopularClasses from '../PopularClasses/PopularClasses';
 import PopularInstrcutors from '../PopularInstrcutors/PopularInstrcutors';
+import ContactForm from '../ContactForm/ContactForm';
 
 
 const Home = () => {
@@ -22,6 +23,9 @@ const Home = () => {
                 <section>
                     <h2 className='text-3xl bg-slate-200 py-4 text-green-500 font-medium text-center mb-6'>Popular Instructors</h2>
                     <PopularInstrcutors></PopularInstrcutors>
+                </section>
+                <section>
+                    <ContactForm></ContactForm>
                 </section>
             </main>
         </>

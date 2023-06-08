@@ -39,7 +39,7 @@ const DashBoard = () => {
             </NavLink></li>
             <li><NavLink to='/dashboard/instructor/all-class' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>
                 <FaGraduationCap></FaGraduationCap>
-                All Classes
+                My Classes
             </NavLink></li>
         </>
     } else {

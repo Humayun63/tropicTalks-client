@@ -18,6 +18,7 @@ import AdminRoute from "./AdminRoute";
 import AddClass from "../pages/DashBoard/Instructor/AddClass/AddClass";
 import InstructorRoute from "./InstructorRoute";
 import AllClass from "../pages/DashBoard/Instructor/AllClass/AllClass";
+import Instructor from "../pages/Instructor/Instructor";
 
 
 
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
             {
                 path: 'classes',
                 element: <Classes></Classes>
+            },
+            {
+                path: 'instructor',
+                element: <Instructor></Instructor>
             }
         ]
     },
@@ -82,12 +87,12 @@ const router = createBrowserRouter([
             },
             // Instructor Routes
             {
-                path:'instructor/add-class',
-                element:<InstructorRoute><AddClass></AddClass></InstructorRoute>
+                path: 'instructor/add-class',
+                element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
             },
             {
-                path:'instructor/all-class',
-                element:<InstructorRoute><AllClass></AllClass></InstructorRoute>
+                path: 'instructor/all-class',
+                element: <InstructorRoute><AllClass></AllClass></InstructorRoute>
             }
         ]
     }

@@ -1,7 +1,6 @@
-import { Rating } from '@smastrom/react-rating';
 import React from 'react';
 
-const SingleClass = ({item}) => {
+const SingleClass = ({ item }) => {
     const { class_image, class_name, price, rating, enrolled, available_seats, instructor_details, status } = item || {}
 
     return (
@@ -17,11 +16,10 @@ const SingleClass = ({item}) => {
                         <p className='text-lg my-1 font-medium'>Enrolled Students: <span className='font-normal'> {enrolled}</span></p>
                         <p className='text-lg my-1 font-medium'>Status: <span className='font-normal'> {status}</span></p>
                         <p className='text-lg my-1 font-medium'>Status: <span className='font-normal'> {instructor_details.instructor_email}</span></p>
-                        <Rating
-                            style={{ maxWidth: 120 }}
-                            value={rating}
-                            readOnly
-                        />
+                        {
+                            item?.feedback &&
+                            <p className='text-lg my-1 font-medium'>Feedback: <span className='font-normal text-red-400'> {item.feedback}</span></p>
+                        }
                     </div>
                     <div className="card-actions mt-4">
                         <button className="btn">Update</button>

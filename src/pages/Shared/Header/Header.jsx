@@ -28,7 +28,7 @@ const Header = () => {
 
     const menuItems = <>
         <li><NavLink to='/' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>Home</NavLink></li>
-        <li><NavLink to='/instructors' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>Instructors</NavLink></li>
+        <li><NavLink to='/instructor' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>Instructors</NavLink></li>
         <li><NavLink to='/classes' className={({ isActive }) => isActive ? 'tropic-active' : 'tropic-default'}>Classes</NavLink></li>
         {
             user &&

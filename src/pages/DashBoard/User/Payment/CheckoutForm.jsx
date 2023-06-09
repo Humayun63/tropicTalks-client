@@ -89,7 +89,7 @@ const CheckoutForm = ({ price, selectedItems }) => {
                     console.log(res.data)
                     if (res.data.insertedResult.insertedId) {
                         Swal.fire({
-                            position: 'center',
+                            position: 'top-end',
                             icon: 'success',
                             title: 'Payment Success',
                             showConfirmButton: false,

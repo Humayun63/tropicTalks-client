@@ -41,7 +41,7 @@ const AddFrom = () => {
                         }
                     }
 
-                    fetch('http://localhost:5000/classes', {
+                    fetch('https://tropic-talks-server.vercel.app/classes', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ const AddFrom = () => {
                         .then(data => {
                             if (data.insertedId) {
                                 Swal.fire({
-                                    position: 'center',
+                                    position: 'top-end',
                                     icon: 'success',
                                     title: 'Class Added Successfully',
                                     showConfirmButton: false,

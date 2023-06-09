@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
 
             // TOKEN RELATED
             if (currentUser) {
-                axios.post('http://localhost:5000/jwt', {
+                axios.post('https://tropic-talks-server.vercel.app/jwt', {
                     email: currentUser.email
                 })
                     .then(data => {

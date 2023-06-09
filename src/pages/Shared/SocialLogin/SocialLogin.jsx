@@ -19,7 +19,7 @@ const SocialLogin = () => {
                     email: data?.user?.email,
                     name: data?.user?.displayName
                 }
-                fetch('http://localhost:5000/users', {
+                fetch('https://tropic-talks-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -31,7 +31,7 @@ const SocialLogin = () => {
                         console.log(data)
 
                         Swal.fire({
-                            position: 'center',
+                            position: 'top-end',
                             icon: 'success',
                             title: `Welcome ${user?.displayName ? user?.displayName : ''}`,
                             showConfirmButton: false,

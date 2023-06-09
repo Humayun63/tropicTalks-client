@@ -5,7 +5,7 @@ const Instructor = () => {
     const {isDarkMode} = useAuth()
 
     useEffect(() => {
-        fetch('http://localhost:5000/instructors')
+        fetch('https://tropic-talks-server.vercel.app/instructors')
             .then(res => res.json())
             .then(data => setInstructors(data))
             .catch(error => console.log(error))

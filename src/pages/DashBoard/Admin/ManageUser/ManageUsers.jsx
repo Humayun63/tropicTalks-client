@@ -9,7 +9,7 @@ const ManageUsers = () => {
 
 
     const handleRole = (user, role) => {
-        fetch(`http://localhost:5000/users/${user._id}`, {
+        fetch(`https://tropic-talks-server.vercel.app/users/${user._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

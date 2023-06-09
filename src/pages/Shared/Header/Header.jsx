@@ -10,7 +10,7 @@ const Header = () => {
         logOut()
             .then(() => {
                 Swal.fire({
-                    position: 'center',
+                    position: 'top-end',
                     icon: 'success',
                     title: 'Successfully logout!',
                     showConfirmButton: false,

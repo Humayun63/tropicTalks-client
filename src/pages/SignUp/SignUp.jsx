@@ -26,7 +26,7 @@ const SignUp = () => {
                     .then(() => {
                         const loggedUser = { email: data.email, name: data.name }
 
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://tropic-talks-server.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -37,7 +37,7 @@ const SignUp = () => {
                             .then(data => {
                                 if (data.insertedId) {
                                     Swal.fire({
-                                        position: 'center',
+                                        position: 'top-end',
                                         icon: 'success',
                                         title: 'Register Success!',
                                         showConfirmButton: false,

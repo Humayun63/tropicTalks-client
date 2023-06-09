@@ -58,7 +58,7 @@ const ManageClasses = () => {
                                 <p className="text-sm text-gray-500">Status: {item.status}</p>
                             </div>
                             <div className="flex justify-around items-center">
-                                <button className="btn-xs btn-success btn rounded-md" disabled={item.status !== 'pending'} onClick={() => handleStatus('approve', item._id)}>Approve</button>
+                                <button className="btn-xs btn-success btn rounded-md" disabled={item.status !== 'pending'} onClick={() => handleStatus('approved', item._id)}>Approve</button>
                                 <button className="btn-xs btn btn-error rounded-md" disabled={item.status !== 'pending'} onClick={() => handleStatus('denied', item._id)}>Denied</button>
                                 <button onClick={() => handleOpenModal(item._id)} className="btn-xs btn-info btn rounded-md ">Send Feedback</button>
                             </div>

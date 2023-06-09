@@ -9,7 +9,7 @@ const PopularInstrcutors = () => {
     ${isDarkMode ? 'bg-slate-500' : 'bg-green-300'}
 */}
     useEffect(() => {
-        fetch('http://localhost:5000/instructors')
+        fetch('https://tropic-talks-server.vercel.app/instructors')
             .then(res => res.json())
             .then(data => setInstructors(data.slice(0, 6)))
             .catch(error => console.log(error))

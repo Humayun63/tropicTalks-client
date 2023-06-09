@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import useAuth from '../../customHooks/useAuth';
@@ -17,13 +17,14 @@ const SingleCard = ({ item }) => {
     const [isDisable, setIsDisable] = useState(false)
 
 
-    if (user) {
-        const { isAdmin } = useAdmin()
-        const { isInstructor } = useInstructor()
+    const { isAdmin } = useAdmin();
+    const { isInstructor } = useInstructor();
+
+    useEffect(() => {
         if (isAdmin || isInstructor) {
-            setIsDisable(true)
+            setIsDisable(true);
         }
-    }
+    }, [isAdmin, isInstructor]);
 
 
     const handleEnroll = item => {
@@ -51,7 +52,7 @@ const SingleCard = ({ item }) => {
                 class_name,
                 price
             }
-            fetch('http://localhost:5000/select', {
+            fetch('https://tropic-talks-server.vercel.app/select', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Slide } from 'react-awesome-reveal';
+import useAuth from '../../../customHooks/useAuth';
 
 const PopularInstrcutors = () => {
     const [instructors, setInstructors] = useState([])
+    const { isDarkMode } = useAuth()
+    {/*
+    ${isDarkMode ? 'bg-slate-500' : 'bg-green-300'}
+*/}
     useEffect(() => {
         fetch('http://localhost:5000/instructors')
             .then(res => res.json())
@@ -16,7 +21,7 @@ const PopularInstrcutors = () => {
                 {
                     instructors.map(instructor => (
                         <Slide key={instructor._id}>
-                            <div className={`card  glass ${instructor.available_seats == 0 ? 'bg-red-400' : 'bg-green-300'}`}>
+                            <div className={`card  glass ${isDarkMode ? 'bg-slate-500 text-white' : 'bg-green-300'}`}>
                                 <figure><img className='w-full h-56' src={instructor.photo} alt={instructor.class_name} /></figure>
                                 <div className="card-body">
                                     <h2 className="card-title">{instructor.name}</h2>

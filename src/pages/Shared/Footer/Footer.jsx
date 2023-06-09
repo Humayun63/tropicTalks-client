@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
+import useAuth from '../../../customHooks/useAuth';
 
 const Footer = () => {
+    const {isDarkMode} = useAuth()
     return (
         <>
             <footer>
-                <div className="footer p-10 bg-green-300  text-base-content">
+                <div className={`footer p-10 ${isDarkMode ? 'bg-slate-500 text-white' : 'text-base-content bg-green-300'}`}>
                     <div>
                         <span className="footer-title">Company</span>
                         <a className="link link-hover">About us</a>
@@ -22,16 +24,16 @@ const Footer = () => {
                         <span className="footer-title">Newsletter</span>
                         <div className="form-control w-80">
                             <label className="label">
-                                <span className="label-text">Enter your email address</span>
+                                <span className="">Enter your email address</span>
                             </label>
                             <div className="relative">
-                                <input type="text" placeholder="username@site.com" className="input input-bordered w-full pr-16" />
+                                <input type="text" placeholder="username@site.com" className="input text-black input-bordered w-full pr-16" />
                                 <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">Subscribe</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
+                <div className={`footer px-10 py-4 border-t border-base-300 ${isDarkMode ? 'bg-slate-500 text-white' : 'bg-base-200 text-base-content'}`}>
                     <div className="items-center grid-flow-col">
                         <Link to='/' className="font-bold normal-case text-3xl inline-flex items-center">
                             <img src={logo} className='w-12' alt="Logo" />

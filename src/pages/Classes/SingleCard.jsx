@@ -9,6 +9,7 @@ import useAdmin from '../../customHooks/useAdmin';
 import useInstructor from '../../customHooks/useInstructor';
 
 const SingleCard = ({ item }) => {
+    const { isDarkMode } = useAuth()
     const { class_image, class_name, price, rating, available_seats, instructor_details, _id } = item || {}
     const { user } = useAuth()
     const navigate = useNavigate()
@@ -72,7 +73,7 @@ const SingleCard = ({ item }) => {
 
     return (
         <>
-            <div className={`card  glass ${available_seats == 0 ? 'bg-red-400' : 'bg-green-300'}`}>
+            <div className={`card  glass ${isDarkMode ? 'bg-slate-500 text-white' : 'bg-green-300'} ${available_seats == 0 && 'bg-red-200'}`}>
                 <figure><img className='w-full h-36' src={class_image} alt={class_name} /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{class_name}</h2>

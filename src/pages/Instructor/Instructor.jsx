@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import useAuth from '../../customHooks/useAuth';
 const Instructor = () => {
     const [instructors, setInstructors] = useState([])
+    const {isDarkMode} = useAuth()
+
     useEffect(() => {
         fetch('http://localhost:5000/instructors')
             .then(res => res.json())
@@ -11,7 +14,7 @@ const Instructor = () => {
     return (
         <div>
             <div className="overflow-x-auto">
-                <table className="table bg-green-200">
+                <table className={`table ${isDarkMode ? 'text-white bg-slate-500' : 'bg-green-200'}`}>
                     <thead>
                         <tr>
                             <th className='text-2xl'>

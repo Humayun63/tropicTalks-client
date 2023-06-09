@@ -3,9 +3,12 @@ import usePopular from '../../../customHooks/usePopular';
 import SingleCard from '../../Classes/SingleCard';
 import { Rating } from '@smastrom/react-rating';
 import { Fade } from 'react-awesome-reveal';
+import useAuth from '../../../customHooks/useAuth';
 
 const PopularClasses = () => {
     const { classes } = usePopular()
+    const { isDarkMode } = useAuth()
+
     return (
         <>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
@@ -13,7 +16,7 @@ const PopularClasses = () => {
                     classes.map(item => (
                         <Fade key={item._id} delay={1e1} cascade damping={1e-1}>
 
-                            <div className={`card  glass ${item.available_seats == 0 ? 'bg-red-400' : 'bg-green-300'}`}>
+                            <div className={`card  glass ${item.available_seats == 0 && 'bg-red-400'} ${isDarkMode ? 'bg-slate-500 text-white' : 'bg-green-300'}`}>
                                 <figure><img className='w-full h-36' src={item.class_image} alt={item.class_name} /></figure>
                                 <div className="card-body">
                                     <h2 className="card-title">{item.class_name}</h2>

@@ -4,6 +4,7 @@ import Slider from '../Slider/Slider';
 import PopularClasses from '../PopularClasses/PopularClasses';
 import PopularInstrcutors from '../PopularInstrcutors/PopularInstrcutors';
 import ContactForm from '../ContactForm/ContactForm';
+import { Fade } from 'react-awesome-reveal';
 
 
 const Home = () => {
@@ -17,11 +18,15 @@ const Home = () => {
                     <Slider></Slider>
                 </section>
                 <section>
-                    <h2 className='text-3xl bg-slate-200 py-4 text-green-500 font-medium text-center mb-6'>Popular language classes</h2>
+                    <Fade delay={1e1} cascade damping={1e-1}>
+                        <h2 className='text-3xl bg-slate-200 py-4 text-green-500 font-medium text-center mb-6'>Popular language classes</h2>
+                    </Fade>
                     <PopularClasses></PopularClasses>
                 </section>
                 <section>
-                    <h2 className='text-3xl bg-slate-200 py-4 text-green-500 font-medium text-center mb-6'>Popular Instructors</h2>
+                    <Fade delay={1e1} cascade damping={1e-1}>
+                        <h2 className='text-3xl bg-slate-200 py-4 text-green-500 font-medium text-center mb-6'>Popular Instructors</h2>
+                    </Fade>
                     <PopularInstrcutors></PopularInstrcutors>
                 </section>
                 <section>

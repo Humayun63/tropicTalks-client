@@ -14,16 +14,15 @@ import {
 const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <div className='container mx-auto'>
-    <React.StrictMode>
-      <Toaster />
-      <HelmetProvider>
-        <QueryClientProvider client={queryClient}>
-          <AuthProvider client={queryClient}>
-            <RouterProvider router={router} />
-          </AuthProvider>
-        </QueryClientProvider>
-      </HelmetProvider>
-    </React.StrictMode>
-  </div>
+
+  <React.StrictMode>
+    <Toaster />
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </AuthProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
+  </React.StrictMode>
 )

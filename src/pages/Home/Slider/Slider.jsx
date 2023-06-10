@@ -9,7 +9,7 @@ import slider4 from '../../../assets/sliderImages/slider4.jpg'
 const Slider = () => {
     return (
         <div className='md:w-1/2 md:mx-auto '>
-            <Carousel showArrows={true} autoPlay={true} infiniteLoop={true}>
+            <Carousel showThumbs={false} showArrows={false} autoPlay={true} infiniteLoop={true}>
                 <div>
                     <img src={slider1} />
                     <p className="legend">

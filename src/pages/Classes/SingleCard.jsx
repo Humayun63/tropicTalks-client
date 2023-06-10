@@ -74,7 +74,7 @@ const SingleCard = ({ item }) => {
 
     return (
         <>
-            <div className={`card  glass ${isDarkMode ? 'bg-slate-500 text-white' : 'bg-green-300'} ${available_seats == 0 && 'bg-red-200'}`}>
+            <div className={`card  glass ${isDarkMode ? 'bg-slate-500 text-white' : 'bg-green-300'} ${available_seats == 0 && 'tropic-bg-red'}`}>
                 <figure><img className='w-full h-36' src={class_image} alt={class_name} /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{class_name}</h2>
